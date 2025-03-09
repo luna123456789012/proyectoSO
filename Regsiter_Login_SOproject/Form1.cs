@@ -34,16 +34,17 @@ namespace Regsiter_Login_SOproject
             // Obtener datos del formulario
             string usuario = txtUsuario.Text.Trim();
             string contrasena = txtContrasena.Text.Trim();
+            string email = txtEmail.Text.Trim();
 
             // Validación básica: verificar que se ingresen datos
-            if (string.IsNullOrEmpty(usuario) || string.IsNullOrEmpty(contrasena))
+            if (string.IsNullOrEmpty(usuario) || string.IsNullOrEmpty(contrasena) || string.IsNullOrEmpty(email))
             {
-                MessageBox.Show("Por favor, ingrese tanto usuario como contraseña.", "Datos incompletos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Por favor, complete todos los campos.", "Datos incompletos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // Cadena de conexión (ajustar según tu configuración)
-            string connectionString = "server=localhost;user=root;database=juego;password=yourpassword;";
+            // Cadena de conexión a la base de datos MySQL
+            string connectionString = "Server=localhost;Port=3306;Database=mydb;Uid=nuevo_usuario;Pwd=tucontraseña;";
 
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
@@ -52,7 +53,7 @@ namespace Regsiter_Login_SOproject
                     connection.Open();
 
                     // Verificar si el usuario ya existe
-                    string queryVerificar = "SELECT COUNT(*) FROM jugadores WHERE usuario = @usuario";
+                    string queryVerificar = "SELECT COUNT(*) FROM jugadores WHERE username = @usuario";
                     using (MySqlCommand cmdVerificar = new MySqlCommand(queryVerificar, connection))
                     {
                         cmdVerificar.Parameters.AddWithValue("@usuario", usuario);
@@ -65,12 +66,13 @@ namespace Regsiter_Login_SOproject
                         }
                     }
 
-                    // Insertar el nuevo usuario
-                    string queryInsertar = "INSERT INTO jugadores (usuario, contraseña) VALUES (@usuario, @contrasena)";
+                    // Insertar el nuevo usuario con email
+                    string queryInsertar = "INSERT INTO jugadores (username, passwrd, email) VALUES (@usuario, @contrasena, @correo)";
                     using (MySqlCommand cmdInsertar = new MySqlCommand(queryInsertar, connection))
                     {
                         cmdInsertar.Parameters.AddWithValue("@usuario", usuario);
                         cmdInsertar.Parameters.AddWithValue("@contrasena", contrasena);
+                        cmdInsertar.Parameters.AddWithValue("@correo", email);
 
                         // Ejecutar la inserción
                         cmdInsertar.ExecuteNonQuery();
