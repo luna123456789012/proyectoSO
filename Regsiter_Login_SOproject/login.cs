@@ -8,6 +8,7 @@ namespace Regsiter_Login_SOproject
     public partial class login : Form
     {
         private Socket server;
+        bool conectado = true;
 
         public login(Socket serverSocket)  // Constructor recibe el socket
         {
@@ -29,6 +30,7 @@ namespace Regsiter_Login_SOproject
             if (server == null || !server.Connected)
             {
                 MessageBox.Show("No estás conectado al servidor.", "Error de conexión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
                 return;
             }
 
@@ -51,7 +53,7 @@ namespace Regsiter_Login_SOproject
                 MessageBox.Show("Login exitoso.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 // Abre el siguiente formulario después del login
-                Querys query = new Querys(server, usuario);
+                Querys query = new Querys(server, usuario,conectado);
                 query.Show();
 
                 this.Hide(); // Ocultar el formulario de login

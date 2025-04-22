@@ -171,6 +171,48 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="cartas\0amarillo.png" />
+    <Content Include="cartas\0azul.png" />
+    <Content Include="cartas\0rojo.png" />
+    <Content Include="cartas\0verde.png" />
+    <Content Include="cartas\1amarillo.png" />
+    <Content Include="cartas\1azul.png" />
+    <Content Include="cartas\1rojo.png" />
+    <Content Include="cartas\1verde.png" />
+    <Content Include="cartas\2amarillo.png" />
+    <Content Include="cartas\2azul.png" />
+    <Content Include="cartas\2rojo.png" />
+    <Content Include="cartas\2verde.png" />
+    <Content Include="cartas\3amarillo.png" />
+    <Content Include="cartas\3azul.png" />
+    <Content Include="cartas\3rojo.png" />
+    <Content Include="cartas\3verde.png" />
+    <Content Include="cartas\4amarillo.png" />
+    <Content Include="cartas\4azul.png" />
+    <Content Include="cartas\4rojo.png" />
+    <Content Include="cartas\4verde.png" />
+    <Content Include="cartas\5amarillo.png" />
+    <Content Include="cartas\5azul.png" />
+    <Content Include="cartas\5rojo.png" />
+    <Content Include="cartas\5verde.png" />
+    <Content Include="cartas\6amarillo.png" />
+    <Content Include="cartas\6azul.png" />
+    <Content Include="cartas\6rojo.png" />
+    <Content Include="cartas\6verde.png" />
+    <Content Include="cartas\7amarillo.png" />
+    <Content Include="cartas\7azul.png" />
+    <Content Include="cartas\7rojo.png" />
+    <Content Include="cartas\7verde.png" />
+    <Content Include="cartas\8amarillo.png" />
+    <Content Include="cartas\8azul.png" />
+    <Content Include="cartas\8rojo.png" />
+    <Content Include="cartas\8verde.png" />
+    <Content Include="cartas\9amarillo.png" />
+    <Content Include="cartas\9azul.png" />
+    <Content Include="cartas\9rojo.png" />
+    <Content Include="cartas\9verde.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
