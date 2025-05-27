@@ -11,3 +11,4 @@ Versión 4 generada por Luna Sousa
 URL: https://youtu.be/cZSqhePZPXo
 Versión 5 generada por Mario Carretero
 Versión 6 generada por Luna Sousa Miyawaki
+Versión 6 verificada por Mario Carretero
