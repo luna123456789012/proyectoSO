@@ -35,9 +35,9 @@ namespace Regsiter_Login_SOproject
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
             string usuario = txtUsuario.Text.Trim();
-            string contrasena = txtContrasena.Text.Trim();
+            string password = txtContrasena.Text.Trim();
 
-            if (string.IsNullOrEmpty(usuario) || string.IsNullOrEmpty(contrasena))
+            if (string.IsNullOrEmpty(usuario) || string.IsNullOrEmpty(password))
             {
                 MessageBox.Show("Por favor, complete todos los campos.", "Datos incompletos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -50,7 +50,7 @@ namespace Regsiter_Login_SOproject
             }
 
             // Enviar datos al servidor con el formato: "2/usuario/contrasena"
-            string mensaje = $"2/{usuario}/{contrasena}";
+            string mensaje = $"2/{usuario}/{password}";
             byte[] msg = Encoding.ASCII.GetBytes(mensaje);
             server.Send(msg);
 
@@ -76,21 +76,6 @@ namespace Regsiter_Login_SOproject
             }
         }
 
-        private void btnConsultarContrasena_Click(object sender, EventArgs e)
-        {
-            // Quiere saber la longitud
-            string mensaje = "1/" + txtPasswrdConsult.Text;
-            // Enviamos al servidor el nombre tecleado
-            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-            server.Send(msg);
-
-            //Recibimos la respuesta del servidor
-            byte[] msg2 = new byte[80];
-            server.Receive(msg2);
-            mensaje = Encoding.ASCII.GetString(msg2).Split('\0')[0];
-            MessageBox.Show("Tu contraseña es: " + mensaje);
-        }
-
         private void btnLoginForm_Click(object sender, EventArgs e)
         {
             login login = new login(server);
@@ -105,7 +90,7 @@ namespace Regsiter_Login_SOproject
                 byte[] msg = Encoding.ASCII.GetBytes(mensaje);
                 server.Send(msg);
 
-                this.BackColor = Color.Gray;
+                this.BackColor = Color.LightYellow;
                 server.Shutdown(SocketShutdown.Both);
                 server.Close();
                 MessageBox.Show("Desconectado del servidor.");
@@ -114,15 +99,15 @@ namespace Regsiter_Login_SOproject
 
         private void btnConnect_Click(object sender, EventArgs e)
         {
-            IPAddress direc = IPAddress.Parse("172.20.10.4"); // Ajusta la IP del servidor
-            IPEndPoint ipep = new IPEndPoint(IPAddress.Parse("172.20.10.4"), 9050);
+            IPAddress direc = IPAddress.Parse("192.168.56.102"); // Ajusta la IP del servidor
+            IPEndPoint ipep = new IPEndPoint(IPAddress.Parse("192.168.56.102"), 9050);
 
 
             server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             try
             {
                 server.Connect(ipep);
-                this.BackColor = Color.Green;
+                this.BackColor = Color.Lavender;
                 MessageBox.Show("Conectado al servidor.");
             }
             catch (SocketException)
